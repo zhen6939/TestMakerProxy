@@ -1,5 +1,5 @@
-var CzToken = artifacts.require("./CzToken.sol");
+var Contract = artifacts.require("./CzToken.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(CzToken);
+  deployer.deploy(Contract);
 };
