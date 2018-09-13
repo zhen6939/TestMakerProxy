@@ -1,6 +1,6 @@
 pragma solidity ^0.4.23;
 
-import 'openzeppelin-solidity/contracts/token/ERC20/StandardToken.sol';
+import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/StandardToken.sol";
 
 contract CzToken is StandardToken {
     string public name = "CZ Token";
@@ -18,8 +18,8 @@ contract CzToken is StandardToken {
         emit Transfer(blackHole, initHolder, initAmount);
     }
 
-    function () payable public {
-        require(msg.value > 0);
+    function () public payable {
+        require(msg.value > 0, "invalid_amount");
         balances[msg.sender] += msg.value * rate * (10 ** decimals);
     }
 }
