@@ -4,8 +4,12 @@ import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/StandardToke
 
 contract TakerProxy {
     uint256 constant MAX_UINT = 2**256 - 1;
+    address public owner;
+    mapping(address => bool) public market_makers;
+    
 
     constructor () public {
+        owner = msg.sender;
     }
     
     function getMaxAmount() public pure returns(uint256) {
@@ -17,5 +21,10 @@ contract TakerProxy {
             StandardToken token = StandardToken(token_addrs[i]);
             require(token.approve(token_proxy, MAX_UINT), "Approve Error");
         }
+    }
+
+    function setMarketMaker(address addr) public returns(bool) {
+        market_makers[addr] = true;
+        return true;
     }
 }

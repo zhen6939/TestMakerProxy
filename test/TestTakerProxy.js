@@ -31,4 +31,22 @@ contract('TakerProxy Test', async (accounts) => {
         amountB = await tokenB.allowance.call(takerAddr, erc20Proxy)
         assert.equal(amountB.toNumber(), expected, "Amount is incorrect")
     })
+
+    it("should set owner as sender", async ()=>{
+        let taker = await TakerProxy.deployed()
+    
+        let owner = await taker.owner.call()
+        let expected = accounts[0]
+
+        assert.equal(owner, expected, "Owner is incorrect")
+    })
+
+    it("should set market maker", async ()=>{
+        let taker = await TakerProxy.deployed()
+
+        let marketMaker = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+        let result = await taker.setMarketMaker.call(marketMaker)
+
+        assert.equal(result, true, "Set market maker failed")
+    })
 })
