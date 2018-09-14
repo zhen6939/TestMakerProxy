@@ -24,9 +24,19 @@ cp .env.example .env
 ```
 # ./migrations/2_deploy_contracts.js
 # modify the contract source file
+```
 
+## Setup local Ethereum testnet 
+1. install ganacha
+```
+# https://github.com/trufflesuite/ganache-cli
 
+npm install -g ganache-cli
+```
+2. run testnet
 
+```
+ganache-cli
 ```
 
 ## Deploy
@@ -34,4 +44,7 @@ cp .env.example .env
 truffle migrate --network kovan --reset
 ```
 
-
+## Run test
+```
+truffle test --network development
+```
