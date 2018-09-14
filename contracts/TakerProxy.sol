@@ -25,6 +25,10 @@ contract TakerProxy {
 
     function setMarketMaker(address addr) public returns(bool) {
         market_makers[addr] = true;
-        return true;
+        return market_makers[addr];
+    }
+
+    function getMarketMaker(address addr) public view returns(bool) {
+        return market_makers[addr];
     }
 }
