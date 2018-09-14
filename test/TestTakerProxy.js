@@ -56,10 +56,9 @@ contract('TakerProxy Test', async (accounts) => {
         let marketMaker = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
         let fakeMarketMaker = "0x1f573d6fb3f13d689ff844b4ce37794d79a7ff1c"
 
-        let result1 = await taker.setMarketMaker.call(marketMaker)
-        assert.equal(result1, true, "Set market maker failed")
-        // let result2 = await taker.getMarketMaker.call(marketMaker)
-        let result2 = await taker.market_makers.call(marketMaker)
+        let result1 = await taker.setMarketMaker(marketMaker)
+        assert.equal(typeof(result1), "object", "Set market maker failed")
+        let result2 = await taker.getMarketMaker.call(marketMaker)
         assert.equal(result2, true, "Get market maker failed")
         let result3 = await taker.getMarketMaker.call(fakeMarketMaker)
         assert.equal(result3, false, "Get market maker failed")

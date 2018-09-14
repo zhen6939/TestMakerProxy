@@ -5,7 +5,7 @@ import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/StandardToke
 contract TakerProxy {
     uint256 constant MAX_UINT = 2**256 - 1;
     address public owner;
-    mapping(address => bool) public market_makers;
+    mapping(address => bool) internal market_makers;
     
 
     constructor () public {
